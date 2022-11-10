@@ -13,12 +13,14 @@ fn main() {
     binary_search_tree.insert(6);
     binary_search_tree.insert(10);
 
+    println!("Level Order: ");
     binary_search_tree.level_order();
+    println!("Post Order: ");
     binary_search_tree.post_order();
-    println!("");
+    println!("\nPre Order: ");
     binary_search_tree.pre_order();
-    println!("");
-    binary_search_tree.in_order(); 
+    println!("\nIn Order: ");
+    binary_search_tree.in_order();
     println!("");
 }
 
