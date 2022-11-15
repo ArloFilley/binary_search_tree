@@ -21,7 +21,12 @@ fn main() {
     binary_search_tree.pre_order();
     println!("\nIn Order: ");
     binary_search_tree.in_order();
-    println!("");
+    println!("\n");
+
+    println!("found {} = {}", 7, binary_search_tree.find(7));
+    println!("found {} = {}", 12, binary_search_tree.find(12));
+    println!("found {} = {}", 10, binary_search_tree.find(10));
+    println!("found {} = {}", 144, binary_search_tree.find(144));
 }
 
 #[derive(Clone)]
@@ -80,7 +85,7 @@ impl Node {
     }
 
     pub fn post_order(
-        & self
+        &self
     ) {
         match self.left {
             Some(ref node) => node.post_order(),
@@ -96,7 +101,7 @@ impl Node {
     }
 
     pub fn pre_order(
-        & self
+        &self
     ) {
         print!("{},", self.value); 
 
@@ -112,7 +117,7 @@ impl Node {
     }
 
     pub fn in_order(
-        & self
+        &self
     ) {
         match self.left {
             Some(ref node) => node.in_order(),
@@ -124,6 +129,25 @@ impl Node {
         match self.right {
             Some(ref node) => node.in_order(),
             None => print!(""),
+        }
+    }
+
+    pub fn find(
+        &self,
+        value: u32
+    ) -> bool {
+        if self.value == value {
+            return true;
+        } else if self.value > value {
+            match self.left {
+                Some(ref node) => node.find(value),
+                None => false
+            }
+        } else {
+            match self.right {
+                Some(ref node) => node.find(value),
+                None => false
+            }
         }
     }
 }
